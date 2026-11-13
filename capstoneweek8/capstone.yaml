@@ -1,0 +1,10 @@
+run: uvicorn main:app --reload
+seed: curl -X POST http://localhost:8000/tenants -H "Content-Type: application/json" -d "{\"name\":\"Demo\"}"
+test: pytest
+base_url: http://localhost:8000
+endpoints:
+  - POST /tenants
+  - POST /generate
+  - GET /usage
+  - POST /checkout
+  - POST /webhooks/stripe
