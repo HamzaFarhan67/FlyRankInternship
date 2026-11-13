@@ -1,8 +1,9 @@
 import sys
 import unittest
+from pathlib import Path
 from urllib.parse import urljoin
 
-sys.path.insert(0, "src")
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 from main import BookRecord, Scraper
 
