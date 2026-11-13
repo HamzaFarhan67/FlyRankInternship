@@ -14,7 +14,7 @@ Use `python src/main.py --include-failure` to verify that one broken URL is skip
 
 The target is Books to Scrape, a public practice sandbox designed for scraping exercises. This scraper processes only the first three catalogue pages, discovers their 60 book URLs, and collects title, product URL, price, availability, rating, description, source page, and fetch time. This limited scope is appropriate because the site is explicitly provided for practice.
 
-The site's `robots.txt` was requested before development. A missing robots file is not treated as permission to reuse this code elsewhere.
+The site's `robots.txt` was requested before development and returned 404, so no robots file was found. A missing robots file is not treated as permission to reuse this code elsewhere.
 
 I will not reuse this code on another site without checking its rules and terms first.
 
