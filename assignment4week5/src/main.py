@@ -52,9 +52,11 @@ class Scraper:
     def fetch(self, url: str, cache_path: Path) -> Optional[str]:
         if cache_path.exists():
             self.cache_hits += 1
+            print(f"CACHE HIT {url}")
             return cache_path.read_text(encoding="utf-8")
 
         for attempt in range(2):
+            print(f"FETCH {url}")
             self._wait()
             try:
                 response = requests.get(
