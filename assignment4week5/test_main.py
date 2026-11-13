@@ -44,6 +44,27 @@ class ScraperTests(unittest.TestCase):
         )
         self.assertIsNone(result["description"])
 
+    def test_duplicate_urls_are_removed(self):
+        scraper = Scraper()
+        html = (
+            '<article class="product_pod"><h3><a href="book/index.html">'
+            "Book</a></h3></article>"
+            '<article class="product_pod"><h3><a href="book/index.html">'
+            "Book</a></h3></article>"
+        )
+        scraper.fetch = lambda url, path: html
+        self.assertEqual(len(scraper.discover()), 1)
+
+    def test_malformed_fixture_is_rejected(self):
+        scraper = Scraper()
+        scraper.fetch = lambda url, path: "<html><body>broken</body></html>"
+        self.assertIsNone(
+            scraper.extract(
+                "https://books.toscrape.com/catalogue/book/index.html",
+                "https://books.toscrape.com/",
+            )
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
